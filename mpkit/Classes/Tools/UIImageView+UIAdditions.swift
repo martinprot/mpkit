@@ -1,6 +1,6 @@
 //
 //  UIImageView+UIAdditions.swift
-//  5gmark-pro
+//  mpkit
 //
 //  Created by Martin Prot on 30/08/2017.
 //  Copyright © 2017 Appricot media. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImageView {
-	@IBInspectable var tintedImage: Bool {
+	@IBInspectable public var tintedImage: Bool {
 		get {
 			guard let image = self.image else { return false }
 			return image.renderingMode == .alwaysTemplate
@@ -25,7 +25,7 @@ extension UIImageView {
 		}
 	}
 	
-	func tintMe() {
+	public func tintMe() {
 		self.image = self.image?.withRenderingMode(.alwaysTemplate)
 	}
 }

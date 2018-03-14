@@ -1,6 +1,6 @@
 //
 //  CGFloat+conversions.swift
-//  5gmark-crowd
+//  mpkit
 //
 //  Created by Martin Prot on 06/12/2017.
 //  Copyright © 2017 Appricot media. All rights reserved.
@@ -13,19 +13,19 @@ protocol CGFloatConvertible {
 }
 
 extension Int: CGFloatConvertible {
-	var cgFloat: CGFloat {
+	public var cgFloat: CGFloat {
 		return CGFloat(self)
 	}
 }
 
 extension Double: CGFloatConvertible {
-	var cgFloat: CGFloat {
+	public var cgFloat: CGFloat {
 		return CGFloat(self)
 	}
 }
 
 extension Float: CGFloatConvertible {
-	var cgFloat: CGFloat {
+	public var cgFloat: CGFloat {
 		return CGFloat(self)
 	}
 }

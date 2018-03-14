@@ -31,6 +31,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'mpkit/Classes/**/*'
+  s.resources = 'mpkit/Assets/nib/*'
   
   # s.resource_bundles = {
   #   'mpkit' => ['mpkit/Assets/*.png']

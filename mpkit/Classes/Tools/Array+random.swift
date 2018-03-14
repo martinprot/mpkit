@@ -1,6 +1,6 @@
 //
 //  Array+random.swift
-//  5gmark-crowd
+//  mpkit
 //
 //  Created by Martin Prot on 08/12/2017.
 //  Copyright © 2017 Appricot media. All rights reserved.

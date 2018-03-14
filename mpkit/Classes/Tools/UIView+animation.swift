@@ -1,6 +1,6 @@
 //
 //  UIView+MP.swift
-//  Appricot media
+//  mpkit
 //
 //  Created by Martin Prot on 06/10/2017.
 //  Copyright © 2017 Appricot media. All rights reserved.

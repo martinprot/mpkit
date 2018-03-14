@@ -1,6 +1,6 @@
 //
-//  GMCUserCenteredMap.swift
-//  5gmark-crowd
+//  MPMapCenterer.swift
+//  mpkit
 //
 //  Created by Martin Prot on 12/12/2017.
 //  Copyright © 2017 Qosi. All rights reserved.

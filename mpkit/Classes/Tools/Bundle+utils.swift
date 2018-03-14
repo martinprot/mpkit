@@ -1,8 +1,9 @@
 //
 //  Bundle+modules.swift
-//  qosiui
+//  mpkit
 //
 //  Created by Martin Prot on 12/03/2018.
+//  Copyright © 2018 Appricot media. All rights reserved.
 //
 
 import Foundation
