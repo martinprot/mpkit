@@ -10,7 +10,7 @@ import MapKit
 
 extension MKCoordinateRegion {
 
-	init?(containing annotations: [MKAnnotation]) {
+	public init?(containing annotations: [MKAnnotation]) {
 		guard let firstAnn = annotations.first else { return nil }
 		var minLat = firstAnn.coordinate.latitude
 		var minLong = firstAnn.coordinate.longitude
