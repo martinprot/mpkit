@@ -17,15 +17,25 @@ extension UIImageView {
 		set {
 			guard let image = self.image else { return }
 			if newValue {
-				self.image = image.withRenderingMode(.alwaysTemplate)
+				self.image = image.tinted
 			}
 			else {
-				self.image = image.withRenderingMode(.alwaysOriginal)
+				self.image = image.notTinted
 			}
 		}
 	}
 	
 	public func tintMe() {
-		self.image = self.image?.withRenderingMode(.alwaysTemplate)
+		self.image = self.image?.tinted
 	}
+}
+
+extension UIImage {
+
+    public var tinted: UIImage {
+        return self.withRenderingMode(.alwaysTemplate)
+    }
+    public var notTinted: UIImage {
+        return self.withRenderingMode(.alwaysOriginal)
+    }
 }
