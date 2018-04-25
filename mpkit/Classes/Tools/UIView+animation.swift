@@ -28,12 +28,12 @@ extension UIView {
 	/// - Parameters:
 	///   - duration: the animation duration
 	///   - completion: callback on completion
-	public func showAnimated(duration: TimeInterval = .standardAnimationDuration, completion: (() -> ())? = .none) {
+	public func showAnimated(duration: TimeInterval = .standardAnimationDuration, delayed: TimeInterval = 0, completion: (() -> ())? = .none) {
 		if self.isHidden {
 			self.alpha = 0
 			self.isHidden = false
 		}
-		UIView.animate(withDuration: duration, animations: {
+		UIView.animate(withDuration: duration, delay: delayed, options: [], animations: {
 			self.alpha = 1
 		}) { _ in
 			completion?()
@@ -45,9 +45,9 @@ extension UIView {
 	/// - Parameters:
 	///   - duration: the animation duration
 	///   - completion: callback on completion
-	public func hideAnimated(duration: TimeInterval = .standardAnimationDuration, completion: (() -> ())? = .none) {
+	public func hideAnimated(duration: TimeInterval = .standardAnimationDuration, delayed: TimeInterval = 0, completion: (() -> ())? = .none) {
 		if self.isHidden { return }
-		UIView.animate(withDuration: duration, animations: {
+		UIView.animate(withDuration: duration, delay: delayed, options: [], animations: {
 			self.alpha = 0
 		}) { _ in
 			self.isHidden = true

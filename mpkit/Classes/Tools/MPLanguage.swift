@@ -15,6 +15,9 @@ extension Notification.Name {
 public enum MPLanguage: String {
 	case english = "en"
 	case french = "fr"
+	case spanish = "es"
+	case polish = "pl"
+	case deutch = "de"
 	
 	private static let userDefaultKey = "MPCurrentLanguage"
 	
