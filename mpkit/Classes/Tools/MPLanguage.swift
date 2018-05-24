@@ -54,10 +54,27 @@ public enum MPLanguage: String {
 extension String {
 	
 	public var localized: String {
+		return self.localized(bundle: Bundle.main)
+	}
+	
+	public func localized(bundle: Bundle) -> String {
 		let currentLanguage = MPLanguage.current
-		guard let path = Bundle.main.path(forResource: currentLanguage.toString, ofType: "lproj"),
+		guard let path = bundle.path(forResource: currentLanguage.toString, ofType: "lproj"),
 			  let langBundle = Bundle(path: path)
 		else { return self }
-		return langBundle.localizedString(forKey: self, value: nil, table: nil)
+		if ProcessInfo.processInfo.arguments.contains("showLocalizationIssues") {
+			let notFound = "notfound"
+			let text = langBundle.localizedString(forKey: self, value: notFound, table: nil)
+			if text == notFound {
+				print("[LOCALIZATION ISSUE] \"\(self)\" not found")
+				return self
+			}
+			else {
+				return text
+			}
+		}
+		else {
+			return langBundle.localizedString(forKey: self, value: nil, table: nil)
+		}
 	}
 }
