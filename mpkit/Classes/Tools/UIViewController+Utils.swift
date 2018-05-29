@@ -11,8 +11,10 @@ import UIKit
 extension UIViewController {
 	
 	/// returns the current view controller embedded into a newly created navigation controller
-	public func intoNavigation() -> UINavigationController {
-		return UINavigationController(rootViewController: self)
+	public func intoNavigation(hiddenNavBar: Bool = false) -> UINavigationController {
+		let nav = UINavigationController(rootViewController: self)
+		nav.isNavigationBarHidden = hiddenNavBar
+		return nav
 	}
 	
 	/**
