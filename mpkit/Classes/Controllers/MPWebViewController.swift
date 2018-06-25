@@ -8,7 +8,7 @@
 import Foundation
 import WebKit
 
-public class MPWebViewController: UIViewController {
+open class MPWebViewController: UIViewController {
 	
 	public convenience init(url: String, loadImmediately: Bool = false) {
 		self.init()
@@ -25,19 +25,14 @@ public class MPWebViewController: UIViewController {
 	@IBOutlet private var activity: UIActivityIndicatorView?
 	private var webView: WKWebView?
 	
-	public override func viewDidLoad() {
+	open override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		guard let container = self.webViewContainer ?? self.view else { return }
 		let webView = WKWebView(frame: container.bounds)
 		webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		webView.navigationDelegate = self
 		container.addSubview(webView)
-		
-		if let url = URL(string: self.url) {
-			// Do any additional setup after loading the view.
-			webView.load(URLRequest(url: url))
-			webView.navigationDelegate = self
-		}
 		self.webView = webView
 		
 		if self.activity == nil {
@@ -46,8 +41,15 @@ public class MPWebViewController: UIViewController {
 			activity.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
 										 .flexibleRightMargin, .flexibleLeftMargin]
 			self.view.addSubview(activity)
-			activity.startAnimating()
 			self.activity = activity
+		}
+		self.load(url: URL(string: self.url))
+	}
+	
+	public func load(url: URL?) {
+		if let url = url {
+			self.webView?.load(URLRequest(url: url))
+			self.activity?.startAnimating()
 		}
 	}
 }

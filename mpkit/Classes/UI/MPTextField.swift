@@ -14,6 +14,7 @@ import UIKit
 class MPTextField: UITextField {
 	
 	@IBInspectable var borderColor: UIColor = .clear { didSet { updateUI() } }
+    @IBInspectable var borderSize: CGFloat = -1 { didSet { updateUI() } }
 	@IBInspectable var cornerRadius: CGFloat = 0 { didSet { updateUI() } }
 	@IBInspectable var placeholderColor: UIColor = .gray { didSet { updateUI() } }
 	@IBInspectable var xTextInsets: CGFloat = 0 { didSet { self.setNeedsLayout() } }
@@ -27,7 +28,12 @@ class MPTextField: UITextField {
 			self.layer.borderWidth = 0
 		}
 		else {
-			self.layer.borderWidth = 1.0 / UIScreen.main.scale
+            if self.borderSize < 0 {
+                self.layer.borderWidth = 1.0 / UIScreen.main.scale
+            }
+            else {
+                self.layer.borderWidth = self.borderSize
+            }
 			self.layer.borderColor = self.borderColor.cgColor
 		}
 		

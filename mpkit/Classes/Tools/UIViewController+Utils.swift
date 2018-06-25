@@ -33,4 +33,17 @@ extension UIViewController {
 		}
 		present(ac, animated: true, completion: nil)
 	}
+	
+	/**
+	*  Present an simple confirm alert
+	*
+	*/
+	public func confirm(title: String? = nil, message: String? = nil, onConfirm: @escaping () -> Void) {
+		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil))
+		ac.addAction(UIAlertAction(title: "Confirm".localized, style: .default, handler: { _ in
+			onConfirm()
+		}))
+		present(ac, animated: true, completion: nil)
+	}
 }
