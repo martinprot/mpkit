@@ -2,6 +2,6 @@ use_frameworks!
 target 'mpkit_Tests' do
   pod 'mpkit', :path => '../'
   
-  pod 'Quick', '~> 1.2.0'
-    pod 'Nimble', '~> 7.0.2'
+#  pod 'Quick', '~> 1.2.0'
+#    pod 'Nimble', '~> 7.0.2'
 end

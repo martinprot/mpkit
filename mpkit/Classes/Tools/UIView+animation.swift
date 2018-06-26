@@ -18,6 +18,10 @@ extension CGFloat {
 	public static let invisible: CGFloat = 0
 	public static let opaque: CGFloat = 1
 	public static let almostOpaque: CGFloat = 0.8
+	
+	public static let standardSpringDampingRatio: CGFloat = 0.7
+	public static let standardSpringInitialVelocity: CGFloat = 0.2
+
 }
 
 
@@ -72,11 +76,42 @@ extension UIView {
 		self.layer.add(animation, forKey: "position")
 	}
 	
-	public static func animateCurvy(duration: TimeInterval = .standardAnimationDuration, animations: @escaping () -> Void, completion: ((Bool) -> Void)? = .none) {
-		animate(withDuration: .standardAnimationDuration, delay: 0, options: .curveEaseInOut, animations: animations, completion: completion)
+	public static func animateCurvy(duration: TimeInterval = .standardAnimationDuration, animations: @escaping () -> Void) {
+		animate(withDuration: .standardAnimationDuration, delay: 0, options: .curveEaseInOut,
+				animations: animations, completion: .none)
 	}
 	
-	public static func animateSpringly(duration: TimeInterval = .standardAnimationDuration, animations: @escaping () -> Void, completion: ((Bool) -> Void)? = .none) {
-		animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: animations, completion: completion)
+	public static func animateCurvy(duration: TimeInterval = .standardAnimationDuration, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) {
+		animate(withDuration: .standardAnimationDuration, delay: 0, options: .curveEaseInOut, animations:
+			animations, completion: completion)
+	}
+	
+	public static func animateSpringly(duration: TimeInterval = .standardAnimationDuration, animations: @escaping () -> Void) {
+		animate(withDuration: duration, delay: 0,
+				usingSpringWithDamping: .standardSpringDampingRatio,
+				initialSpringVelocity: .standardSpringInitialVelocity,
+				options: .curveEaseInOut,
+				animations: animations,
+				completion: nil)
+	}
+	
+	public static func animateSpringly(duration: TimeInterval = .standardAnimationDuration, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) {
+		animate(withDuration: duration, delay: 0,
+				usingSpringWithDamping: .standardSpringDampingRatio,
+				initialSpringVelocity: .standardSpringInitialVelocity,
+				options: .curveEaseInOut,
+				animations: animations,
+				completion: completion)
+	}
+	
+	public func layoutNow() {
+		self.setNeedsLayout()
+		self.layoutIfNeeded()
+	}
+	
+	public func commitLayoutAnimated(duration: TimeInterval = .standardAnimationDuration) {
+		UIView.animate(withDuration: duration) {
+			self.layoutIfNeeded()
+		}
 	}
 }
