@@ -7,19 +7,19 @@
 
 import UIKit
 
-class UILoadingButton: UIButton {
+public class UILoadingButton: UIButton {
 	
-	var isLoading: Bool = false
+	public var isLoading: Bool = false
 	
-	var loadingStyle: UIActivityIndicatorViewStyle = .white
+	public var loadingStyle: UIActivityIndicatorViewStyle = .white
 	
-	override var isEnabled: Bool {
+	override public var isEnabled: Bool {
 		didSet {
 			self.alpha = self.isEnabled ? 1 : 0.7
 		}
 	}
 	
-	@IBInspectable var cornerRadius: CGFloat = 0
+	@IBInspectable public var cornerRadius: CGFloat = 0
 	
 	private var buttonTitle: String?
 	private var buttonImage: UIImage?
@@ -32,14 +32,14 @@ class UILoadingButton: UIButton {
 		return activity
 	}
 	
-	override func awakeFromNib() {
+	override public func awakeFromNib() {
 		super.awakeFromNib()
 		self.layer.cornerRadius = cornerRadius
 		self.clipsToBounds = true
 		self.alpha = self.isEnabled ? 1 : 0.5
 	}
 	
-	func startLoading() {
+	public func startLoading() {
 		if !self.isLoading {
 			let activity = self.activity
 			activity.center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
@@ -55,7 +55,7 @@ class UILoadingButton: UIButton {
 		}
 	}
 	
-	override func setImage(_ image: UIImage?, for state: UIControlState) {
+	override public func setImage(_ image: UIImage?, for state: UIControlState) {
 		if self.isLoading, state == .normal {
 			self.buttonImage = image
 		}
@@ -64,7 +64,7 @@ class UILoadingButton: UIButton {
 		}
 	}
 	
-	func stopLoading() {
+	public func stopLoading() {
 		if self.isLoading {
 			self.isEnabled = true
 			self.isLoading = false

@@ -12,6 +12,7 @@
 		3248B7A91E1D33A659439B337A7B3CEA /* UILoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20781DE02456E7732B49C9E7878D5621 /* UILoadingButton.swift */; };
 		38D6D8118B3CC9D3F5F2E3F9A926D1F8 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744A000D589E1D221742729AA7918EA5 /* UIViewController+Utils.swift */; };
 		5AADDF91D02A2D6431FAF416C5610EFA /* Bundle+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8EA69DC32BB804B644951AA347CC14 /* Bundle+utils.swift */; };
+		5B86403020E286A700C8D768 /* UIViewController+embedding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86402F20E286A700C8D768 /* UIViewController+embedding.swift */; };
 		5E7D7B1EF685F64D8749A1406A0279B1 /* MPMapCenterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2D3762EEAFF04D148E8CF65069D19 /* MPMapCenterer.swift */; };
 		66B35416CA51437AAD19975DE156BB2E /* MPSegmentedPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B41A1A09FDCBF8152C70B583415A17B /* MPSegmentedPageViewController.xib */; };
 		70B9AE6F7D940A0D91037EE30934524D /* mpkit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A45CEDB7E2EC31D9B9FAD80171C9911C /* mpkit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,11 +50,12 @@
 
 /* Begin PBXFileReference section */
 		00557B07717902FBE23A52B52EF3E392 /* Pods-mpkit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mpkit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		05F6BD3E9E683981FDED1D9019EFB045 /* mpkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = mpkit.framework; path = mpkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		05F6BD3E9E683981FDED1D9019EFB045 /* mpkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mpkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0781CCE967D5C68B6B4075EA20AD86F1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1B138923F8D2487607489729831255BE /* Pods_mpkit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_mpkit_Tests.framework; path = "Pods-mpkit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B138923F8D2487607489729831255BE /* Pods_mpkit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mpkit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20781DE02456E7732B49C9E7878D5621 /* UILoadingButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UILoadingButton.swift; sourceTree = "<group>"; };
 		43104FFB0ED7B74D89A2407B6ADFCE1A /* Pods-mpkit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-mpkit_Tests.modulemap"; sourceTree = "<group>"; };
+		5B86402F20E286A700C8D768 /* UIViewController+embedding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+embedding.swift"; sourceTree = "<group>"; };
 		5EEFCDDAFC86B39FA2B6A81E0CB0881E /* Pods-mpkit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-mpkit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		5F90262B3D2C5973BF876DE980520731 /* MKCoordinateRegion+utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+utils.swift"; sourceTree = "<group>"; };
 		639A27AE112618DE0F87B7E285C81B6F /* Pods-mpkit_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-mpkit_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -65,7 +67,7 @@
 		7DAF46A5A2E9E26567FDD1DA22E92E73 /* UIView+screenshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+screenshot.swift"; sourceTree = "<group>"; };
 		8038CD591FE9ADB8950CFC83B75D7804 /* MPWebViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MPWebViewController.swift; sourceTree = "<group>"; };
 		894A5B47C413BD92A7315FD4383D960D /* UIImageView+UIAdditions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImageView+UIAdditions.swift"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B41A1A09FDCBF8152C70B583415A17B /* MPSegmentedPageViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MPSegmentedPageViewController.xib; path = mpkit/Assets/nib/MPSegmentedPageViewController.xib; sourceTree = "<group>"; };
 		9BA9E227E9794BA08D0D4CE513FD0E4A /* Pods-mpkit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-mpkit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9BCEFDECEA2CF895FE5D456B7E3FCB0B /* MPPartiallyModalViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MPPartiallyModalViewController.swift; sourceTree = "<group>"; };
@@ -83,12 +85,12 @@
 		D59F89FDDA09EE42E0AB4519B8A82881 /* CG+Arithmetics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CG+Arithmetics.swift"; sourceTree = "<group>"; };
 		D5F4431B79EED5B236605CC2595C47AA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E659D9701B2EF1EBE264F00B67991783 /* Array+random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+random.swift"; sourceTree = "<group>"; };
-		EC8F8BEBC93DD47325D9468B82D4837C /* mpkit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = mpkit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		EEAC2E8160894D8FD9DAD5783B8B2A11 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		EC8F8BEBC93DD47325D9468B82D4837C /* mpkit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = mpkit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EEAC2E8160894D8FD9DAD5783B8B2A11 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EF45A7D8C1CFD3F9F18072708721A7A1 /* MPTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MPTextField.swift; sourceTree = "<group>"; };
 		EF65055FE44CAB6ADC7C0F5B198A8D70 /* mpkit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = mpkit.modulemap; sourceTree = "<group>"; };
 		F0C7B044D56A1D99CC2190383BDB3102 /* mpkit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = mpkit.xcconfig; sourceTree = "<group>"; };
-		F0F946D191615823FB2E0F4C87DFC486 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		F0F946D191615823FB2E0F4C87DFC486 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F458B5FAFB8CBF7F9571C0508767953D /* UIColor+interpolation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+interpolation.swift"; sourceTree = "<group>"; };
 		F99BFCED3F26512F478EBAF7AE9C8444 /* MPLanguage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MPLanguage.swift; sourceTree = "<group>"; };
 		FA7CD3EBE380737FBB3CFDC467C03B6F /* Collection+safeAccess.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Collection+safeAccess.swift"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				CC84B235E43296CC3F8A0FB0EB9A1E4E /* UIView+animation.swift */,
 				7DAF46A5A2E9E26567FDD1DA22E92E73 /* UIView+screenshot.swift */,
 				744A000D589E1D221742729AA7918EA5 /* UIViewController+Utils.swift */,
+				5B86402F20E286A700C8D768 /* UIViewController+embedding.swift */,
 			);
 			name = Tools;
 			path = mpkit/Classes/Tools;
@@ -393,6 +396,7 @@
 				B59EB2C39D3BB92482BFC5C1F72107F3 /* String+size.swift in Sources */,
 				F4E6C3CA36BEFAC266C6D5C7E0199B32 /* UICircleView.swift in Sources */,
 				9240CB043549A62DDBAB95CD310C0B89 /* UIColor+interpolation.swift in Sources */,
+				5B86403020E286A700C8D768 /* UIViewController+embedding.swift in Sources */,
 				02D0BEF50DCA787166A496E9B1E6002E /* UIGradientView.swift in Sources */,
 				DC4F79D1420B3E02F5B94E20BC3B0225 /* UIImageView+UIAdditions.swift in Sources */,
 				3248B7A91E1D33A659439B337A7B3CEA /* UILoadingButton.swift in Sources */,
