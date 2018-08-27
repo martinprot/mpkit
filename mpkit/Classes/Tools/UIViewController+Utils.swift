@@ -46,4 +46,42 @@ extension UIViewController {
 		}))
 		present(ac, animated: true, completion: nil)
 	}
+	
+	/**
+	*  Tells if the view controller can be popped
+	*
+	*/
+	public var canPopViewController: Bool {
+		if let nav = self.navigationController, self != nav.viewControllers.first {
+			return true
+		}
+		else {
+			return false
+		}
+	}
+	
+	/**
+	*  Pop current view controller if there is a navigation controller, and if current is not the first controller
+	*  otherwise, dismiss
+	*/
+	public func popOrDismiss(animated: Bool) {
+		if self.canPopViewController {
+			self.navigationController?.popViewController(animated: true)
+		}
+		else {
+			self.dismiss(animated: true, completion: nil)
+		}
+	}
+}
+
+// Swift 3 version, no co-animation (alongsideTransition parameter is nil)
+extension UINavigationController {
+	public func pushViewController(_ viewController: UIViewController, animated: Bool, completion: @escaping () -> Void) {
+		self.pushViewController(viewController, animated: animated)
+		guard animated, let coordinator = transitionCoordinator else {
+			completion()
+			return
+		}
+		coordinator.animate(alongsideTransition: nil) { _ in completion() }
+	}
 }

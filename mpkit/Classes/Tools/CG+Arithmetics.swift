@@ -71,5 +71,28 @@ extension CGRect {
     public func removing(position: CGPoint) -> CGRect {
         return self.adding(position: CGPoint(x: -position.x, y: -position.y))
     }
+	
+	public init(center: CGPoint, size: CGSize) {
+		self.init(x: center.x - size.width/2, y: center.y - size.height/2, width: size.width, height: size.height)
+	}
+}
+
+extension UIView {
+	/// The size of the intersection between the caller and the view in parameter
+	/// the visual intersection is independent from the view hierarchy.
+	/// note: the view in parameter is optional for convenience
+	/// warning: DON'T USE THIS METHOD IN VIEWDIDLOAD, because view are not sized properly
+	/// at this time.
+	public func size(ofIntersectionWith view: UIView?) -> CGSize {
+		guard let view = view else { return .zero }
+		let myRect = self.convert(bounds, to: nil)
+		let hisRect = view.convert(view.bounds, to: nil)
+		if myRect.intersects(hisRect) {
+			return myRect.intersection(hisRect).size
+		}
+		else {
+			return .zero
+		}
+	}
 }
 

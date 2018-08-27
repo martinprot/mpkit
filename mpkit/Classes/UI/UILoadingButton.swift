@@ -7,15 +7,20 @@
 
 import UIKit
 
-public class UILoadingButton: UIButton {
+fileprivate extension CGFloat {
+	static let disabledAlpha: CGFloat = 0.7
+	static let highlightedBackgroundAlpha: CGFloat = 0.5
+}
+
+open class UILoadingButton: UIButton {
 	
 	public var isLoading: Bool = false
 	
 	public var loadingStyle: UIActivityIndicatorViewStyle = .white
 	
-	override public var isEnabled: Bool {
+	override open var isEnabled: Bool {
 		didSet {
-			self.alpha = self.isEnabled ? 1 : 0.7
+			self.alpha = self.isEnabled ? 1 : .disabledAlpha
 		}
 	}
 	
@@ -23,16 +28,16 @@ public class UILoadingButton: UIButton {
 	
 	private var buttonTitle: String?
 	private var buttonImage: UIImage?
-	
-	private var activity: UIActivityIndicatorView {
+	private lazy var loader: UIActivityIndicatorView = {
 		let activity = UIActivityIndicatorView(activityIndicatorStyle: self.loadingStyle)
 		activity.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
 		activity.hidesWhenStopped = true
 		activity.tintColor = self.titleColor(for: .normal)
+		self.addSubview(activity)
 		return activity
-	}
+	}()
 	
-	override public func awakeFromNib() {
+	override open func awakeFromNib() {
 		super.awakeFromNib()
 		self.layer.cornerRadius = cornerRadius
 		self.clipsToBounds = true
@@ -41,10 +46,8 @@ public class UILoadingButton: UIButton {
 	
 	public func startLoading() {
 		if !self.isLoading {
-			let activity = self.activity
-			activity.center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-			self.addSubview(activity)
-			activity.startAnimating()
+			self.loader.center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+			self.loader.startAnimating()
 			self.buttonTitle = self.title(for: .normal)
 			self.buttonImage = self.image(for: .normal)
 			self.setTitle(.none, for: .normal)
@@ -55,7 +58,7 @@ public class UILoadingButton: UIButton {
 		}
 	}
 	
-	override public func setImage(_ image: UIImage?, for state: UIControlState) {
+	override open func setImage(_ image: UIImage?, for state: UIControlState) {
 		if self.isLoading, state == .normal {
 			self.buttonImage = image
 		}
@@ -68,7 +71,7 @@ public class UILoadingButton: UIButton {
 		if self.isLoading {
 			self.isEnabled = true
 			self.isLoading = false
-			self.activity.stopAnimating()
+			self.loader.stopAnimating()
 			self.setTitle(self.buttonTitle, for: .normal)
 			self.setImage(self.buttonImage, for: .normal)
 		}

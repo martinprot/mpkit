@@ -114,4 +114,9 @@ extension UIView {
 			self.layoutIfNeeded()
 		}
 	}
+	
+	public func makeRound() {
+		self.layer.cornerRadius = min(self.bounds.width, self.bounds.height) / 2
+		self.clipsToBounds = true
+	}
 }
