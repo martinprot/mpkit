@@ -120,3 +120,8 @@ extension UIView {
 		self.clipsToBounds = true
 	}
 }
+
+extension UIViewAutoresizing {
+    public static var centered: UIViewAutoresizing = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
+    public static var flexibleSize: UIViewAutoresizing = [.flexibleWidth, .flexibleHeight]
+}
