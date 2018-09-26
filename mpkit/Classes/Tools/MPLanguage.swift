@@ -12,16 +12,12 @@ extension Notification.Name {
 	public static let languageChanged = Notification.Name("languageChangedNotification")
 }
 
-public enum MPLanguage: String {
-	case english = "en"
-	case french = "fr"
-	case spanish = "es"
-	case polish = "pl"
-	case deutch = "de"
+public struct MPLanguage {
+	let isoCode: String
 	
 	private static let userDefaultKey = "MPCurrentLanguage"
 	
-	public static let `default`: MPLanguage = .english
+	public static let `default`: MPLanguage = MPLanguage(from: "en")
 	
 	public static var current: MPLanguage {
 		get {
@@ -37,16 +33,16 @@ public enum MPLanguage: String {
 	}
 	
 	public var toString: String {
-		return rawValue
+		return isoCode
 	}
 	
 	public init(from: String) {
 		if let range = from.range(of: "-") {
 			let sub = String(from[..<range.lowerBound])
-			self = MPLanguage(rawValue: sub) ?? .default
+			self.isoCode = sub
 		}
 		else {
-			self = MPLanguage(rawValue: from) ?? .default
+			self.isoCode = from
 		}
 	}
 }

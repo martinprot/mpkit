@@ -39,12 +39,12 @@ open class MPSegmentedPageViewController: UIViewController {
 			segControl.insertSegment(withTitle: vc.title, at: segControl.numberOfSegments, animated: false)
 			
 			// embedding vc
-			vc.willMove(toParentViewController: self)
-			self.addChildViewController(vc)
+			vc.willMove(toParent: self)
+			self.addChild(vc)
 			vc.view.frame = frame
 			scrollView.addSubview(vc.view)
 			vc.view.autoresizingMask = [.flexibleHeight]
-			vc.didMove(toParentViewController: self)
+			vc.didMove(toParent: self)
 			frame.origin.x += frame.size.width
 		}
 		scrollView.contentSize = CGSize(width: frame.origin.x, height: frame.height)
