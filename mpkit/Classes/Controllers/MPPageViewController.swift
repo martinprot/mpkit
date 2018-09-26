@@ -1,16 +1,25 @@
 //
-//  MPSegmentedPageViewController.swift
-//  mpkit
+//  MPPageViewController.swift
+//  ImageLoader
 //
-//  Created by Martin Prot on 12/12/2017.
-//  Copyright © 2017 Appricot media. All rights reserved.
+//  Created by Martin Prot on 11/09/2018.
 //
 
 import UIKit
 
-open class MPSegmentedPageViewController: UIViewController {
+open class MPPageViewController: UIViewController {
 	
 	private let viewControllers: [UIViewController]
+	@IBOutlet private var pageControl: UIPageControl?
+	
+	public private(set) var currentPage: Int = 0 {
+		didSet {
+			self.pageControl?.currentPage = self.currentPage
+			self.pageDidChange()
+		}
+	}
+	public var pageCount: Int { return self.viewControllers.count }
+	public var isLastPage: Bool { return self.currentPage == self.pageCount-1 }
 	
 	public init(nibName: String? = .none, viewControllers: [UIViewController]) {
 		self.viewControllers = viewControllers
@@ -21,33 +30,24 @@ open class MPSegmentedPageViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	@IBOutlet public private(set) var segmentedControl: UISegmentedControl?
 	@IBOutlet public private(set) var scrollView: UIScrollView?
-
+	
 	open override func viewDidLoad() {
 		super.viewDidLoad()
-				
-		guard let scrollView = self.scrollView,
-			  let segControl = self.segmentedControl
-		else { return }
 		
-		var frame = scrollView.bounds
-		segControl.removeAllSegments()
+		guard let scrollView = self.scrollView else { return }
+		scrollView.isPagingEnabled = true
+		scrollView.showsVerticalScrollIndicator = false
+		scrollView.showsHorizontalScrollIndicator = false
+		
+		self.pageControl?.numberOfPages = self.viewControllers.count
+		self.currentPage = 0
 		
 		self.viewControllers.forEach { vc in
-			// adding segmented entry
-			segControl.insertSegment(withTitle: vc.title, at: segControl.numberOfSegments, animated: false)
-			
-			// embedding vc
-			vc.willMove(toParent: self)
-			self.addChild(vc)
-			vc.view.frame = frame
-			scrollView.addSubview(vc.view)
+			self.embed(viewController: vc, in: scrollView)
 			vc.view.autoresizingMask = [.flexibleHeight]
-			vc.didMove(toParent: self)
-			frame.origin.x += frame.size.width
 		}
-		scrollView.contentSize = CGSize(width: frame.origin.x, height: frame.height)
+		self.updateEmbeddedControllerFrames()
 	}
 	
 	open override func viewDidLayoutSubviews() {
@@ -65,9 +65,15 @@ open class MPSegmentedPageViewController: UIViewController {
 		scrollView.contentSize = CGSize(width: frame.origin.x, height: frame.height)
 	}
 	
-	@IBAction private func onSegmentedChanged(_ sender: UISegmentedControl) {
+	public func set(page: Int) {
+		guard page < self.viewControllers.count else { return }
 		guard let width = self.scrollView?.bounds.width else { return }
-		self.scrollView?.setContentOffset(CGPoint(x: width * sender.selectedSegmentIndex.cgFloat, y: 0), animated: true)
+		self.scrollView?.setContentOffset(CGPoint(x: width * page.cgFloat, y: 0), animated: true)
+		self.currentPage = page
+	}
+	
+	open func pageDidChange() {
+		
 	}
 }
 
@@ -76,13 +82,12 @@ open class MPSegmentedPageViewController: UIViewController {
 // MARK: Scrollview delegate
 ////////////////////////////////////////////////////////////////////////////
 
-extension MPSegmentedPageViewController: UIScrollViewDelegate {
+extension MPPageViewController: UIScrollViewDelegate {
 	
 	open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-		guard let segControl = self.segmentedControl else { return }
 		let page = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
-		if page < segControl.numberOfSegments, segControl.selectedSegmentIndex != page {
-			segControl.selectedSegmentIndex = page
+		if page < self.pageCount, self.currentPage != page {
+			self.currentPage = page
 		}
 	}
 	

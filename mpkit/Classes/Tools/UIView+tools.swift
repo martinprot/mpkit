@@ -121,7 +121,7 @@ extension UIView {
 	}
 }
 
-extension UIViewAutoresizing {
-    public static var centered: UIViewAutoresizing = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
-    public static var flexibleSize: UIViewAutoresizing = [.flexibleWidth, .flexibleHeight]
+extension UIView.AutoresizingMask {
+    public static var centered: UIView.AutoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
+    public static var flexibleSize: UIView.AutoresizingMask = [.flexibleWidth, .flexibleHeight]
 }

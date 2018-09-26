@@ -9,7 +9,7 @@ import Foundation
 
 extension NSMutableAttributedString {
 	
-	public convenience init(attributedCouples: [(text: String, attributes: [NSAttributedStringKey : Any])]) {
+	public convenience init(attributedCouples: [(text: String, attributes: [NSAttributedString.Key : Any])]) {
 		self.init()
 		attributedCouples.forEach { couple in
 			self.append(NSMutableAttributedString(string: couple.text, attributes: couple.attributes))

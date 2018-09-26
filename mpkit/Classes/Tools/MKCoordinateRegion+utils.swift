@@ -32,10 +32,10 @@ extension MKCoordinateRegion {
 		}
 		let topLeft = CLLocationCoordinate2D(latitude: minLat, longitude: minLong)
 		let bottomRight = CLLocationCoordinate2D(latitude: maxLat, longitude: maxLong)
-		let a = MKMapPointForCoordinate(topLeft)
-		let b = MKMapPointForCoordinate(bottomRight)
+		let a = MKMapPoint(topLeft)
+		let b = MKMapPoint(bottomRight)
 		let mapRect = MKMapRect(origin: MKMapPoint(x:min(a.x,b.x), y:min(a.y,b.y)), size: MKMapSize(width: abs(a.x-b.x), height: abs(a.y-b.y)))
-		let region = MKCoordinateRegionForMapRect(mapRect)
+		let region = MKCoordinateRegion.init(mapRect)
 		self.init(center: region.center, span: MKCoordinateSpan(latitudeDelta: region.span.latitudeDelta*1.2, longitudeDelta: region.span.longitudeDelta*1.2))
 	}
 }

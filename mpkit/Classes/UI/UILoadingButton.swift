@@ -16,7 +16,7 @@ open class UILoadingButton: UIButton {
 	
 	public var isLoading: Bool = false
 	
-	public var loadingStyle: UIActivityIndicatorViewStyle = .white
+	public var loadingStyle: UIActivityIndicatorView.Style = .white
 	
 	override open var isEnabled: Bool {
 		didSet {
@@ -29,7 +29,7 @@ open class UILoadingButton: UIButton {
 	private var buttonTitle: String?
 	private var buttonImage: UIImage?
 	private lazy var loader: UIActivityIndicatorView = {
-		let activity = UIActivityIndicatorView(activityIndicatorStyle: self.loadingStyle)
+		let activity = UIActivityIndicatorView(style: self.loadingStyle)
 		activity.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
 		activity.hidesWhenStopped = true
 		activity.tintColor = self.titleColor(for: .normal)
@@ -58,7 +58,7 @@ open class UILoadingButton: UIButton {
 		}
 	}
 	
-	override open func setImage(_ image: UIImage?, for state: UIControlState) {
+	override open func setImage(_ image: UIImage?, for state: UIControl.State) {
 		if self.isLoading, state == .normal {
 			self.buttonImage = image
 		}

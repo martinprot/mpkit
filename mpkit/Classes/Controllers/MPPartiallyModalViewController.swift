@@ -70,10 +70,10 @@ public final class MPPartiallyModalViewController: UIViewController {
         self.blackView.alpha = self.backgroundAlpha
 
         // child view controlled
-        viewController.willMove(toParentViewController: self)
-        addChildViewController(viewController)
+        viewController.willMove(toParent: self)
+        addChild(viewController)
         self.view.addSubview(viewController.view)
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
         let height = self.view.bounds.height - self.offset.size(for: self.view.bounds.height)
         self.viewController.view.frame = CGRect(x: 0, y: self.view.frame.maxY - height,
                                                 width: self.view.frame.width, height: height)

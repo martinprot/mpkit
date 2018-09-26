@@ -14,20 +14,20 @@ extension UIViewController {
 	/// resizes its width and height
 	public func embed(viewController: UIViewController?, in view: UIView?) {
 		guard let view = view, let viewController = viewController else { return }
-		viewController.willMove(toParentViewController: self)
-		self.addChildViewController(viewController)
+		viewController.willMove(toParent: self)
+		self.addChild(viewController)
 		viewController.view.frame = view.bounds
 		view.addSubview(viewController.view)
 		viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-		viewController.didMove(toParentViewController: self)
+		viewController.didMove(toParent: self)
 	}
 	
 	/// Properly removes the embedded view controller (in parameter) from its parent (self)
 	public func remove(viewController: UIViewController?) {
-		viewController?.willMove(toParentViewController: nil)
+		viewController?.willMove(toParent: nil)
 		viewController?.view.removeFromSuperview()
-		viewController?.removeFromParentViewController()
-		viewController?.didMove(toParentViewController: nil)
+		viewController?.removeFromParent()
+		viewController?.didMove(toParent: nil)
 	}
 }
 
