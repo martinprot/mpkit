@@ -119,6 +119,16 @@ extension UIView {
 		self.layer.cornerRadius = min(self.bounds.width, self.bounds.height) / 2
 		self.clipsToBounds = true
 	}
+	
+	public func toFront() {
+		guard let superview = self.superview else { return }
+		superview.bringSubviewToFront(self)
+	}
+	
+	public func toBack() {
+		guard let superview = self.superview else { return }
+		superview.sendSubviewToBack(self)
+	}
 }
 
 extension UIView.AutoresizingMask {
