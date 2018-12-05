@@ -37,7 +37,7 @@ open class MPWebViewController: UIViewController {
 		
 		if self.activity == nil {
 			let activity = UIActivityIndicatorView(style: .gray)
-			activity.center = (self.view.bounds.size / 2).toPoint
+			activity.center = CGPoint(self.view.bounds.size / 2)
 			activity.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
 										 .flexibleRightMargin, .flexibleLeftMargin]
 			self.view.addSubview(activity)

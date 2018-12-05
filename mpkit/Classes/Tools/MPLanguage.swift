@@ -9,19 +9,15 @@
 import Foundation
 
 extension Notification.Name {
-	public static let languageChanged = Notification.Name("languageChangedNotification")
+	public static let MPLanguageChanged = Notification.Name("MPLanguageChangedNotification")
 }
 
-public enum MPLanguage: String {
-	case english = "en"
-	case french = "fr"
-	case spanish = "es"
-	case polish = "pl"
-	case deutch = "de"
+public struct MPLanguage: Equatable {
+	let isoCode: String
 	
 	private static let userDefaultKey = "MPCurrentLanguage"
 	
-	public static let `default`: MPLanguage = .english
+	public static let `default`: MPLanguage = MPLanguage(from: "en")
 	
 	public static var current: MPLanguage {
 		get {
@@ -32,21 +28,21 @@ public enum MPLanguage: String {
 		}
 		set {
 			UserDefaults.standard.set(newValue.toString, forKey: MPLanguage.userDefaultKey)
-			NotificationCenter.default.post(name: .languageChanged, object: nil)
+			NotificationCenter.default.post(name: .MPLanguageChanged, object: nil)
 		}
 	}
 	
 	public var toString: String {
-		return rawValue
+		return isoCode
 	}
 	
 	public init(from: String) {
 		if let range = from.range(of: "-") {
 			let sub = String(from[..<range.lowerBound])
-			self = MPLanguage(rawValue: sub) ?? .default
+			self.isoCode = sub
 		}
 		else {
-			self = MPLanguage(rawValue: from) ?? .default
+			self.isoCode = from
 		}
 	}
 }

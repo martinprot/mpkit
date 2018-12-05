@@ -60,6 +60,19 @@ extension UIView {
 		}
 	}
 	
+	
+	/// Fades the view out, then do the given middleAction, then fade in back.
+	///
+	/// - Parameters:
+	///   - totalDuration: the duration of both animations
+	///   - middleAction: the action to do when the view is hidden
+	public func fadeOutFadeIn(totalDuration: TimeInterval = .standardAnimationDuration, middleAction: @escaping () -> ()) {
+		self.hideAnimated(duration: totalDuration/2) {
+			middleAction()
+			self.showAnimated(duration: totalDuration/2)
+		}
+	}
+	
 	/// Shake animation for UIViews
 	///
 	/// - Parameters:
@@ -134,4 +147,9 @@ extension UIView {
 extension UIView.AutoresizingMask {
     public static var centered: UIView.AutoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
     public static var flexibleSize: UIView.AutoresizingMask = [.flexibleWidth, .flexibleHeight]
+	
+	public static var topLeft: UIView.AutoresizingMask = [.flexibleBottomMargin, .flexibleRightMargin]
+	public static var topRight: UIView.AutoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin]
+	public static var bottomLeft: UIView.AutoresizingMask = [.flexibleTopMargin, .flexibleRightMargin]
+	public static var bottomRight: UIView.AutoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
 }

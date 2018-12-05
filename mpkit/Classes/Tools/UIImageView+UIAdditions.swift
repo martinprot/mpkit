@@ -30,6 +30,20 @@ extension UIImageView {
 	public func tintMe() {
 		self.image = self.image?.tinted
 	}
+	
+	public var bestWidthForCurrentImageHeight: CGFloat {
+		guard let imageSize = self.image?.size else {
+			return 0
+		}
+		return self.bounds.height * imageSize.width / imageSize.height
+	}
+	
+	public var bestHeightForCurrentImageWidth: CGFloat {
+		guard let imageSize = self.image?.size else {
+			return 0
+		}
+		return self.bounds.width * imageSize.height / imageSize.width
+	}
 }
 
 extension UIImage {
