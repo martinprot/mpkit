@@ -21,8 +21,8 @@ extension UIViewController {
 	*  Present an alert describing the error, with an optional title
 	*
 	*/
-	public func present(error: Error, title: String? = nil, message: String? = nil, onRetry:(() -> Void)? = nil, onCancel:(() -> Void)? = nil) {
-		let ac = UIAlertController(title: title, message: message ?? error.localizedDescription, preferredStyle: .alert)
+	public func present(error: Error?, title: String? = nil, message: String? = nil, onRetry:(() -> Void)? = nil, onCancel:(() -> Void)? = nil) {
+		let ac = UIAlertController(title: title, message: message ?? error?.localizedDescription, preferredStyle: .alert)
 		ac.addAction(UIAlertAction(title: "Ok".localized, style: .cancel, handler: { _ in
 			onCancel?()
 		}))
