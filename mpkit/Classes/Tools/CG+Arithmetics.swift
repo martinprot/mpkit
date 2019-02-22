@@ -47,24 +47,22 @@ extension CGSize {
 }
 
 extension CGRect {
-    public func adding(x: CGFloat) -> CGRect {
-        return CGRect(x: self.minX + x, y: self.minY, width: self.width, height: self.height)
-    }
-    public func adding(y: CGFloat) -> CGRect {
-        return CGRect(x: self.minX, y: self.minY + y, width: self.width, height: self.height)
-    }
-    public func adding(width: CGFloat) -> CGRect {
-        return CGRect(x: self.minX, y: self.minY, width: self.width + width, height: self.height)
-    }
-    public func adding(height: CGFloat) -> CGRect {
-        return CGRect(x: self.minX, y: self.minY, width: self.width, height: self.height + height)
-    }
+	public func changing(x: CGFloat) -> CGRect { return CGRect(x: x, y: self.minY, width: self.width, height: self.height) }
+	public func changing(y: CGFloat) -> CGRect { return CGRect(x: self.minX, y: y, width: self.width, height: self.height) }
+	public func changing(width: CGFloat) -> CGRect { return CGRect(x: self.minX, y: self.minY, width: width, height: self.height) }
+	public func changing(height: CGFloat) -> CGRect { return CGRect(x: self.minX, y: self.minY, width: self.width, height: height) }
+	
+	public func adding(x: CGFloat) -> CGRect { return self.changing(x: self.minX + x) }
+	public func adding(y: CGFloat) -> CGRect { return self.changing(x: self.minY + y) }
+	public func adding(width: CGFloat) -> CGRect { return self.changing(x: self.width + width) }
+	public func adding(height: CGFloat) -> CGRect { return self.changing(x: self.height + height) }
     public func adding(size: CGSize) -> CGRect {
         return CGRect(x: self.minX, y: self.minY, width: self.width + size.width, height: self.height + size.height)
     }
     public func adding(position: CGPoint) -> CGRect {
         return CGRect(x: self.minX + position.x, y: self.minY + position.y, width: self.width, height: self.height)
     }
+	
     public func removing(x: CGFloat) -> CGRect { return self.adding(x: -x) }
     public func removing(y: CGFloat) -> CGRect { return self.adding(y: -y) }
     public func removing(width: CGFloat) -> CGRect { return self.adding(width: -width) }

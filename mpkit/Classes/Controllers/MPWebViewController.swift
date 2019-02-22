@@ -23,7 +23,7 @@ open class MPWebViewController: UIViewController {
 	
 	@IBOutlet private var webViewContainer: UIView?
 	@IBOutlet private var activity: UIActivityIndicatorView?
-	private var webView: WKWebView?
+	public private(set) var webView: WKWebView?
 	
 	open override func viewDidLoad() {
 		super.viewDidLoad()
@@ -55,6 +55,7 @@ open class MPWebViewController: UIViewController {
 }
 
 extension MPWebViewController: WKNavigationDelegate {
+	
 	public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation) {
 		self.activity?.startAnimating()
 	}
