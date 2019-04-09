@@ -60,6 +60,26 @@ extension UIView {
 		}
 	}
 	
+	/// Adds the subview with a fade in animation with the given duration
+	///
+	/// - Parameters:
+	///   - subview: the subview will be added to superview children
+	///   - fadingInDuration: the fade animation duration
+	public func addSubview(_ subview: UIView, fadingInDuration: TimeInterval) {
+		subview.alpha = 0
+		self.addSubview(subview)
+		subview.showAnimated(duration: fadingInDuration, delayed: 0)
+	}
+	
+	/// Fades the view out, then removes it from its superview
+	///
+	/// - Parameter withFadeOutDuration: the fade out animation duration
+	public func removeFromSuperView(withFadeOutDuration: TimeInterval) {
+		self.hideAnimated(duration: withFadeOutDuration, delayed: 0) {
+			self.removeFromSuperview()
+		}
+	}
+	
 	
 	/// Fades the view out, then do the given middleAction, then fade in back.
 	///

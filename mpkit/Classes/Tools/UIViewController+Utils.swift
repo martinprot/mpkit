@@ -47,6 +47,26 @@ extension UIViewController {
 		present(ac, animated: true, completion: nil)
 	}
 	
+	
+	/// Presents a full screen loader that prevents all on-screen interaction (nav bars are not impacted)
+	///
+	/// - Parameters:
+	///   - style: the loader style
+	///   - blackAlpha: the opacity of the black background
+	public func presentLoaderController(style: UIActivityIndicatorView.Style = .whiteLarge, blackAlpha: CGFloat = 0.8) -> UIViewController {
+		let controller = UIViewController()
+		let loader = UIActivityIndicatorView(style: style)
+		loader.autoresizingMask = .centered
+		loader.center = CGPoint(controller.view.bounds.size / 2)
+		loader.startAnimating()
+		controller.view.backgroundColor = .init(white: 0, alpha: blackAlpha)
+		controller.view.addSubview(loader)
+		controller.modalPresentationStyle = .overCurrentContext
+		controller.modalTransitionStyle = .crossDissolve
+		self.present(controller, animated: true, completion: nil)
+		return controller
+	}
+	
 	/**
 	*  Tells if the view controller can be popped
 	*
