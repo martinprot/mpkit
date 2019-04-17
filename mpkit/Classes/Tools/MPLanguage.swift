@@ -55,9 +55,10 @@ extension String {
 	
 	public func localized(bundle: Bundle) -> String {
 		let currentLanguage = MPLanguage.current
-		guard let path = bundle.path(forResource: currentLanguage.toString, ofType: "lproj"),
-			  let langBundle = Bundle(path: path)
-		else { return self }
+		let path = bundle.path(forResource: currentLanguage.toString, ofType: "lproj") ??
+					bundle.path(forResource: MPLanguage.default.toString, ofType: "lproj")
+		
+		guard let langBundle = path.flatMap({Bundle(path: $0)}) else { return self }
 		if ProcessInfo.processInfo.arguments.contains("showLocalizationIssues") {
 			let notFound = "notfound"
 			let text = langBundle.localizedString(forKey: self, value: notFound, table: nil)
