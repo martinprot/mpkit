@@ -10,7 +10,7 @@ import UIKit
 
 /// Automatically handles the keyboard insets to the injected scrollview
 final public class KeyboardInsetHandler {
-    private let scrollView: UIScrollView?
+    private var scrollView: UIScrollView?
 	private var safeBottomArea: CGFloat?
 	
     /// the scrollview inset to revert after the keyboard will fold
@@ -20,7 +20,7 @@ final public class KeyboardInsetHandler {
 	/// if not set, the inset handler takes the same value as the defaultInsets
 	public var defaultIndicatorInsets: UIEdgeInsets?
 
-    public init(scrollView: UIScrollView?) {
+    public init(scrollView: UIScrollView? = .none) {
         self.scrollView = scrollView
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.onKeyboardWillShow(_:)),
@@ -29,6 +29,10 @@ final public class KeyboardInsetHandler {
                                                selector: #selector(self.onKeyboardDidHide(_:)),
                                                name: UIResponder.keyboardDidHideNotification, object: nil)
     }
+	
+	public func handle(scrollView: UIScrollView?) {
+		self.scrollView = scrollView
+	}
 
     deinit {
         NotificationCenter.default.removeObserver(self)

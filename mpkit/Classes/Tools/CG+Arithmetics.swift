@@ -53,9 +53,9 @@ extension CGRect {
 	public func changing(height: CGFloat) -> CGRect { return CGRect(x: self.minX, y: self.minY, width: self.width, height: height) }
 	
 	public func adding(x: CGFloat) -> CGRect { return self.changing(x: self.minX + x) }
-	public func adding(y: CGFloat) -> CGRect { return self.changing(x: self.minY + y) }
-	public func adding(width: CGFloat) -> CGRect { return self.changing(x: self.width + width) }
-	public func adding(height: CGFloat) -> CGRect { return self.changing(x: self.height + height) }
+	public func adding(y: CGFloat) -> CGRect { return self.changing(y: self.minY + y) }
+	public func adding(width: CGFloat) -> CGRect { return self.changing(width: self.width + width) }
+	public func adding(height: CGFloat) -> CGRect { return self.changing(height: self.height + height) }
     public func adding(size: CGSize) -> CGRect {
         return CGRect(x: self.minX, y: self.minY, width: self.width + size.width, height: self.height + size.height)
     }
