@@ -92,10 +92,17 @@ extension UIViewController {
 			self.dismiss(animated: true, completion: nil)
 		}
 	}
+	
+	/// The view controller presented by the vc presented of the vc presented of ... of this view controller
+	public var topPresentedController: UIViewController {
+		guard let controller = self.presentedViewController else { return self }
+		return controller.topPresentedController
+	}
 }
 
 // Swift 3 version, no co-animation (alongsideTransition parameter is nil)
 extension UINavigationController {
+	
 	public func pushViewController(_ viewController: UIViewController, animated: Bool, completion: @escaping () -> Void) {
 		self.pushViewController(viewController, animated: animated)
 		guard animated, let coordinator = transitionCoordinator else {

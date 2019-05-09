@@ -79,6 +79,13 @@ extension CGRect {
 	}
 }
 
+extension UIEdgeInsets {
+	public func changing(top: CGFloat) -> UIEdgeInsets { return UIEdgeInsets(top: top, left: self.left, bottom: self.bottom, right: self.right) }
+	public func changing(left: CGFloat) -> UIEdgeInsets { return UIEdgeInsets(top: self.top, left: left, bottom: self.bottom, right: self.right) }
+	public func changing(bottom: CGFloat) -> UIEdgeInsets { return UIEdgeInsets(top: self.top, left: self.left, bottom: bottom, right: self.right) }
+	public func changing(right: CGFloat) -> UIEdgeInsets { return UIEdgeInsets(top: self.top, left: self.left, bottom: self.bottom, right: right) }
+}
+
 extension UIView {
 	/// The size of the intersection between the caller and the view in parameter
 	/// the visual intersection is independent from the view hierarchy.

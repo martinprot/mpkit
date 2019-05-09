@@ -48,6 +48,7 @@ open class MPSegmentedPageViewController: UIViewController {
 			frame.origin.x += frame.size.width
 		}
 		scrollView.contentSize = CGSize(width: frame.origin.x, height: frame.height)
+		segControl.selectedSegmentIndex = 0
 	}
 	
 	open override func viewDidLayoutSubviews() {
