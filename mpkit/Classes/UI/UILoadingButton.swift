@@ -12,6 +12,7 @@ fileprivate extension CGFloat {
 	static let highlightedBackgroundAlpha: CGFloat = 0.5
 }
 
+@available(*, deprecated, message: "Use MPButton instead")
 open class UILoadingButton: UIButton {
 	
 	public var isLoading: Bool = false
