@@ -99,25 +99,3 @@ extension UIViewController {
 		return controller.topPresentedController
 	}
 }
-
-// Swift 3 version, no co-animation (alongsideTransition parameter is nil)
-extension UINavigationController {
-	
-	public func pushViewController(_ viewController: UIViewController, animated: Bool, completion: @escaping () -> Void) {
-		self.pushViewController(viewController, animated: animated)
-		guard animated, let coordinator = transitionCoordinator else {
-			completion()
-			return
-		}
-		coordinator.animate(alongsideTransition: nil) { _ in completion() }
-	}
-	
-	public func setViewControllers(_ viewControllers: [UIViewController], animated: Bool, completion: @escaping () -> Void) {
-		self.setViewControllers(viewControllers, animated: animated)
-		guard animated, let coordinator = transitionCoordinator else {
-			completion()
-			return
-		}
-		coordinator.animate(alongsideTransition: nil) { _ in completion() }
-	}
-}
