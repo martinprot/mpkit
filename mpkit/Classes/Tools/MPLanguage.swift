@@ -35,15 +35,19 @@ public struct MPLanguage: Equatable {
 	public var toString: String {
 		return isoCode
 	}
+
+    public var prefix: String {
+        if let range = self.isoCode.range(of: "-") {
+            let sub = String(self.isoCode[..<range.lowerBound])
+            return sub
+        }
+        else {
+            return self.isoCode
+        }
+    }
 	
 	public init(from: String) {
-		if let range = from.range(of: "-") {
-			let sub = String(from[..<range.lowerBound])
-			self.isoCode = sub
-		}
-		else {
-			self.isoCode = from
-		}
+		self.isoCode = from
 	}
 }
 

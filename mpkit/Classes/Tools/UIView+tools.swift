@@ -173,3 +173,22 @@ extension UIView.AutoresizingMask {
 	public static var bottomLeft: UIView.AutoresizingMask = [.flexibleTopMargin, .flexibleRightMargin]
 	public static var bottomRight: UIView.AutoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
 }
+
+extension UIView {
+
+    public var widthConstraint: NSLayoutConstraint? {
+        return self.constraints.first(where: { c in
+            guard let item = c.firstItem else { return false }
+            guard item === self else { return false }
+            return c.firstAttribute == .width
+        })
+    }
+
+    public var heightConstraint: NSLayoutConstraint? {
+        return self.constraints.first(where: { c in
+            guard let item = c.firstItem else { return false }
+            guard item === self else { return false }
+            return c.firstAttribute == .height
+        })
+    }
+}
