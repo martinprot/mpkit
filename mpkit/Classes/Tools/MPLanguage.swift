@@ -14,6 +14,7 @@ extension Notification.Name {
 
 public struct MPLanguage: Equatable {
 	let isoCode: String
+	public let prefix: String
 	
 	private static let userDefaultKey = "MPCurrentLanguage"
 	
@@ -35,19 +36,15 @@ public struct MPLanguage: Equatable {
 	public var toString: String {
 		return isoCode
 	}
-
-    public var prefix: String {
-        if let range = self.isoCode.range(of: "-") {
-            let sub = String(self.isoCode[..<range.lowerBound])
-            return sub
-        }
-        else {
-            return self.isoCode
-        }
-    }
 	
 	public init(from: String) {
 		self.isoCode = from
+		if let range = from.range(of: "-") {
+			self.prefix = String(from[..<range.lowerBound])
+        }
+        else {
+            self.prefix = from
+        }
 	}
 }
 
@@ -59,7 +56,8 @@ extension String {
 	
 	public func localized(bundle: Bundle) -> String {
 		let currentLanguage = MPLanguage.current
-		let path = bundle.path(forResource: currentLanguage.toString, ofType: "lproj") ??
+		let path =  bundle.path(forResource: currentLanguage.prefix, ofType: "lproj") ??
+					bundle.path(forResource: currentLanguage.toString, ofType: "lproj") ??
 					bundle.path(forResource: MPLanguage.default.toString, ofType: "lproj")
 		
 		guard let langBundle = path.flatMap({Bundle(path: $0)}) else { return self }
