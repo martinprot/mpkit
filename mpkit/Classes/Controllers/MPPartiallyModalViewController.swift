@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol MPPartiallyModalViewControllerDelegate: class {
+public protocol MPPartiallyModalViewControllerDelegate: AnyObject {
     func controllerDidDismiss(_ controller: MPPartiallyModalViewController)
 }
 

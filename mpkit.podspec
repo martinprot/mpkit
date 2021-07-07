@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'mpkit'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of mpkit.'
+  s.version          = '1.0.0'
+  s.summary          = 'Various tools, extension and helper objects'
   s.swift_version	 = '5'
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Martin Prot' => 'martinprot@gmail.com' }
   s.source           = { :git => 'https://github.com/Martin Prot/mpkit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/appricotmedia'
 
   s.ios.deployment_target = '9.0'
 
